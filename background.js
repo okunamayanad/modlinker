@@ -1,4 +1,3 @@
-console.log("selam ben background");
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request[0] == "checkIfExists") {
     // if 404 error, return false
