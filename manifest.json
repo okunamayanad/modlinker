@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "CurseForge avoider",
+  "version": "1.0",
+
+  "description": "Avoids CurseForge links, replacing them with Modrinth links in Google search results.",
+
+  "icons": {
+    "16": "assets/ext-icon_16.png",
+    "24": "assets/ext-icon_24.png",
+    "32": "assets/ext-icon_32.png"
+  },
+  "host_permissions": [
+    "https://google.com/search*",
+    "https://modrinth.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/ext-icon_16.png",
+      "24": "assets/ext-icon_24.png",
+      "32": "assets/ext-icon_32.png"
+    },
+    "default_title": "Send me to Modrinth!",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/search*"],
+      "js": ["contentScript.js"]
+    }
+  ]
+
+
+}
