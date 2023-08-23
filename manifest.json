@@ -24,7 +24,7 @@
       "24": "assets/ext-icon_24.png",
       "32": "assets/ext-icon_32.png"
     },
-    "default_title": "Send me to Modrinth!",
+    "default_title": "CurseForge avoider!",
     "default_popup": "popup.html"
   },
 
