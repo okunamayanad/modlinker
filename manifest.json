@@ -10,10 +10,6 @@
     "24": "assets/ext-icon_24.png",
     "32": "assets/ext-icon_32.png"
   },
-  "host_permissions": [
-    "https://google.com/search*",
-    "https://modrinth.com/*"
-  ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
