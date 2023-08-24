@@ -146,7 +146,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             // Modrinth: https://modrinth.com/mod/<project-name>
             // check if modrinth link exists
             let doesModrinthThrowError;
-            var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
+            var doesModrinthExist = await forwardRequest("https://api.modrinth.com/v2/project/" + projectName).catch(err => {
                 console.log("error", err);
                 if (err.statusCode !== 404) { doesModrinthThrowError = True }
                 return false;
@@ -157,13 +157,40 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
         } else if (href.includes("9minecraft") && href.includes("-mod/")) {
             console.log("found 9minecraft link", href);
             let linkArgs = href.split("/");
-            console.log(linkArgs)
             linkArgs = linkArgs.slice(3);
             var projectName = linkArgs[0].slice(0, -4);
             console.log("projectName ", projectName)
             var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
                 console.log("error", err);
-                if (err.statusCode === 404) { doesModrinthThrowError = True }
+                if (err.statusCode !== 404) { doesModrinthThrowError = True }
+                return false;
+            });
+            let aContainer = addModrinthButton(doesModrinthExist, projectName, result);
+            await new Promise(resolve => setTimeout(resolve, 10));
+            aContainer.classList.remove("loading-anim-modrinth");
+        } else if (href.includes("planetminecraft") && (href.includes("/mod/") || href.includes("/data-pack/"))) {
+            console.log("found pmc link", href);
+            let linkArgs = href.split("/");
+            linkArgs = linkArgs.slice(4);
+            var projectName = linkArgs[0]
+            console.log("projectName ", projectName)
+            var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
+                console.log("error", err);
+                if (err.statusCode !== 404) { doesModrinthThrowError = True }
+                return false;
+            });
+            let aContainer = addModrinthButton(doesModrinthExist, projectName, result);
+            await new Promise(resolve => setTimeout(resolve, 10));
+            aContainer.classList.remove("loading-anim-modrinth");
+        } else if (href.includes("mc-mod.net") && href.includes("-mod/")) {
+            console.log("found mcmod link", href);
+            let linkArgs = href.split("/");
+            linkArgs = linkArgs.slice(3);
+            var projectName = linkArgs[0].slice(0, -4);
+            console.log("projectName ", projectName)
+            var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
+                console.log("error", err);
+                if (err.statusCode !== 404) { doesModrinthThrowError = True }
                 return false;
             });
             let aContainer = addModrinthButton(doesModrinthExist, projectName, result);
