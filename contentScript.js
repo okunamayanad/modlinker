@@ -6,7 +6,7 @@ style.innerHTML = `
 }
 
 .button-modrinth{
-    transition: all 0.5s cubic-bezier(0.460, 0.010, 0.000, 1.000); !important;
+    transition: all 0.5s cubic-bezier(0.460, 0.010, 0.000, 1.000) !important;
 }
 
 .button-modrinth:hover{
