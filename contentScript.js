@@ -18,6 +18,9 @@ document.head.appendChild(style);
 
 function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError) {
     let modrinthLink;
+    let validColor = "#1bd96a",
+        waringColor = "#ffa347",
+        errorColor = "#ff496e";
     if (doesModrinthExist) {
         modrinthLink = "https://modrinth.com/mod/" + projectName;
     } else {
@@ -36,7 +39,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
     var button = document.createElement("a");
     button.setAttribute("href", modrinthLink)
     button.setAttribute("class", "button-modrinth");
-    button.setAttribute("style", "padding: 5px; background-color: #1bd96a; border-radius: 5px; width: auto;height: 20px;display: block; transform: translateY(-64px);");
+    button.setAttribute("style", "padding: 5px; box-shadow:inset 0px 0px 0px 3px #1bd96a; border-radius: 5px; width: auto;height: 20px;display: block; transform: translateY(-64px);");
 
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -59,12 +62,12 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
     let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("fill", "#26292f");
 
-    if (modrinthLink.includes("modrinth.com/mod/")) {
-        g.style.backgroundColor = "#1bd96a";
+    if (doesModrinthExist) {
+        g.setAttribute("fill", validColor);
     } else if (doesModrinthThrowError) {
-        g.style.backgroundColor = "#ff496e";
+        g.setAttribute("fill", errorColor);
     } else {
-        g.style.backgroundColor = "#ffa347";
+        g.setAttribute("fill", waringColor);
     }
     g.setAttribute("data-v-4efc4064", "");
 
