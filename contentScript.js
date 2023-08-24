@@ -1,4 +1,4 @@
-function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThorwError) { 
+function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError) { 
             let modrinthLink;
             if (doesModrinthExist) {
                 modrinthLink = "https://modrinth.com/mod/" + projectName;
@@ -61,7 +61,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
             if (modrinthLink.includes("modrinth.com/mod/")) {
                 g.setAttribute("fill", "#1bd96a");
-            } else if (doesModrinthThorwError){
+            } else if (doesModrinthThrowError){
                 g.setAttribute("fill", "#ff496e");
             } else {
                 g.setAttribute("fill", "#ffa347");
@@ -145,13 +145,13 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             console.log("projectName: ", projectName);
             // Modrinth: https://modrinth.com/mod/<project-name>
             // check if modrinth link exists
-            let doesModrinthThorwError;
+            let doesModrinthThrowError;
             var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
                 console.log("error", err);
-                if (err.statusCode !== 404) { doesModrinthThorwError = True }
+                if (err.statusCode !== 404) { doesModrinthThrowError = True }
                 return false;
             });
-            let aContainer = addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThorwError);
+            let aContainer = addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError);
             await new Promise(resolve => setTimeout(resolve, 10));
             aContainer.classList.remove("loading-anim-modrinth");
         } else if (href.includes("9minecraft") && href.includes("-mod/")) {
@@ -163,7 +163,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             console.log("projectName ", projectName)
             var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
                 console.log("error", err);
-                if (err.statusCode === 404) { doesModrinthThorwError = True }
+                if (err.statusCode === 404) { doesModrinthThrowError = True }
                 return false;
             });
             let aContainer = addModrinthButton(doesModrinthExist, projectName, result);
