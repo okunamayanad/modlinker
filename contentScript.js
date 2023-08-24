@@ -60,7 +60,6 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
     let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute("fill", "#26292f");
 
-    g = aContainer
     if (modrinthLink.includes("modrinth.com/mod/")) {
         g.style.backgroundColor = "#1bd96a";
     } else if (doesModrinthThrowError) {
