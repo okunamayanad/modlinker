@@ -1,8 +1,7 @@
 let style = document.createElement("style");
 style.innerHTML = `
 .loading-anim-modrinth{
-    opacity: 0 !important;
-    transform: translateY(-20px) !important;
+    transform: translateY(64px) !important;
 }
 
 .button-modrinth{
