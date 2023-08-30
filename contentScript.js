@@ -64,14 +64,14 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
 
     if (doesModrinthExist) {
         g.setAttribute("fill", validColor);
-        button.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
+        button.style.boxShadow = "inset 0px 0px 0px 3px #1bd96a";
     } else if (doesModrinthThrowError) {
         g.setAttribute("fill", errorColor);
         button.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
     } else {
         console.log("got a warning here");
         g.setAttribute("fill", waringColor);
-        button.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
+        button.style.boxShadow = "inset 0px 0px 0px 3px #ff496e";
     }
     g.setAttribute("data-v-4efc4064", "");
 
