@@ -164,7 +164,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             linkArgs = linkArgs.slice(3);
             var projectName = linkArgs[0].slice(0, -4);
             console.log("projectName ", projectName)
-            var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
+            var doesModrinthExist = await forwardRequest("https://api.modrinth.com/v2/project/" + projectName).catch(err => {
                 console.log("error", err);
                 if (err.statusCode !== 404) { doesModrinthThrowError = True }
                 return false;
@@ -178,7 +178,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             linkArgs = linkArgs.slice(4);
             var projectName = linkArgs[0]
             console.log("projectName ", projectName)
-            var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
+            var doesModrinthExist = await forwardRequest("https://api.modrinth.com/v2/project/" + projectName).catch(err => {
                 console.log("error", err);
                 if (err.statusCode !== 404) { doesModrinthThrowError = True }
                 return false;
@@ -192,7 +192,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             linkArgs = linkArgs.slice(3);
             var projectName = linkArgs[0].slice(0, -4);
             console.log("projectName ", projectName)
-            var doesModrinthExist = await forwardRequest("https://modrinth.com/mod/" + projectName).catch(err => {
+            var doesModrinthExist = await forwardRequest("https://api.modrinth.com/v2/project/" + projectName).catch(err => {
                 console.log("error", err);
                 if (err.statusCode !== 404) { doesModrinthThrowError = True }
                 return false;
