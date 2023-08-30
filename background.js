@@ -1,8 +1,11 @@
 let cache = {};
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log("current request", request);
+  console.log("current cache", cache);
   if (request[0] == "checkIfExists") {
     // check if cache exists
-    if (cache[request[1]]) {
+    if (cache[request[1]] !== undefined) {
+      console.log("cache exists", cache[request[1]]);
       sendResponse(cache[request[1]]);
       return true;
     }
