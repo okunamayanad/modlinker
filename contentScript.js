@@ -38,8 +38,8 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
 
     var button = document.createElement("a");
     button.setAttribute("href", modrinthLink)
-    button.setAttribute("class", "button-modrinth");
-    button.setAttribute("style", "padding: 5px; box-shadow:inset 0px 0px 0px 3px #1bd96a; border-radius: 5px; width: auto;height: 20px;display: block; transform: translateY(-64px);");
+    button.classList.add("button-modrinth");
+    button.setAttribute("style", "padding: 5px; border-radius: 5px; width: auto;height: 20px;display: block; transform: translateY(-64px);");
 
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -64,10 +64,14 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
 
     if (doesModrinthExist) {
         g.setAttribute("fill", validColor);
+        button.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
     } else if (doesModrinthThrowError) {
         g.setAttribute("fill", errorColor);
+        button.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
     } else {
+        console.log("got a warning here");
         g.setAttribute("fill", waringColor);
+        button.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
     }
     g.setAttribute("data-v-4efc4064", "");
 
