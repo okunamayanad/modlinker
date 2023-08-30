@@ -16,12 +16,6 @@
     "type": "module"
   },
   "action": {
-    "default_icon": {
-      "16": "assets/ext-icon_16.png",
-      "32": "assets/ext-icon_32.png",
-      "48": "assets/ext-icon_48.png",
-      "128": "assets/ext-icon_128.png"
-    },
     "default_title": "CurseForge avoider!",
     "default_popup": "popup.html"
   },
