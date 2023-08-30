@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "CurseForge avoider",
-  "version": "1.0",
+  "version": "1.1",
 
   "description": "Avoids CurseForge links, replacing them with Modrinth links in Google search results.",
 
