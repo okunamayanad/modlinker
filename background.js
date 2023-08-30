@@ -1,10 +1,7 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request[0] == "checkIfExists") {
     // if 404 error, return false
-    fetch(request[1], {
-      method: "HEAD",
-      mode: "no-cors"
-    }).then(response => {
+    fetch(request[1]).then(response => {
       console.log("response", response);
       if (response.status == 404) {
         sendResponse(false);
