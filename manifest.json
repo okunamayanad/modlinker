@@ -7,8 +7,9 @@
 
   "icons": {
     "16": "assets/ext-icon_16.png",
-    "24": "assets/ext-icon_24.png",
-    "32": "assets/ext-icon_32.png"
+    "32": "assets/ext-icon_32.png",
+    "48": "assets/ext-icon_48.png",
+    "128": "assets/ext-icon_128.png"
   },
   "background": {
     "service_worker": "background.js",
@@ -17,8 +18,9 @@
   "action": {
     "default_icon": {
       "16": "assets/ext-icon_16.png",
-      "24": "assets/ext-icon_24.png",
-      "32": "assets/ext-icon_32.png"
+      "32": "assets/ext-icon_32.png",
+      "48": "assets/ext-icon_48.png",
+      "128": "assets/ext-icon_128.png"
     },
     "default_title": "CurseForge avoider!",
     "default_popup": "popup.html"
@@ -30,6 +32,4 @@
       "js": ["contentScript.js"]
     }
   ]
-
-
 }
