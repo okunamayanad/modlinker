@@ -107,7 +107,6 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
     function forwardRequest(message) {
         return new Promise((resolve, reject) => {
             chrome.runtime.sendMessage(["checkIfExists", message, new XMLHttpRequest()], (response) => {
-                if (!response) return reject(chrome.runtime.lastError)
                 return resolve(response)
             })
         })
