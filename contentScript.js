@@ -7,20 +7,40 @@ style.innerHTML = `
 .button-modrinth{
     transition: all 0.5s cubic-bezier(0.460, 0.010, 0.000, 1.000) !important;
 }
-
 .button-modrinth:hover{
     transform: translateY(-70px) !important;
 }
 .button-modrinth:active{
     transform: translateY(-66px) !important;
-`;
+}
+
+.button-modrinth-valid{
+    box-shadow: inset 0px 0px 0px 1px #1db96a;
+}
+.button-modrinth-valid:hover{
+    box-shadow: inset 0px 0px 0px 2px #1db96a;
+}
+
+.button-modrinth-warning{
+    box-shadow: inset 0px 0px 0px 1px #ffa347;
+}
+.button-modrinth-warning:hover{
+    box-shadow: inset 0px 0px 0px 2px #ffa347;
+}
+
+.button-modrinth-error{
+    box-shadow: inset 0px 0px 0px 1px #ff496e;
+}
+.button-modrinth-error{
+    box-shadow: inset 0px 0px 0px 1px #ff496e;
+}`;
 document.head.appendChild(style);
 
 function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError, isCurseforge) {
     let modrinthLink;
     let curserinthLink = "https://curserinth.kuylar.dev/mod/mod__" + projectName //https://curserinth.kuylar.dev/mod/mod__inmis
     let validColor = "#1bd96a",
-        waringColor = "#ffa347",
+        warningColor = "#ffa347",
         errorColor = "#ff496e";
     if (doesModrinthExist) {
         modrinthLink = "https://modrinth.com/mod/" + projectName;
@@ -93,17 +113,17 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
     let modrinthG = document.createElementNS("http://www.w3.org/2000/svg", "g");
     modrinthG.setAttribute("fill", "#26292f");
 
-    curserinthButton.style.boxShadow = "inset 0px 0px 0px 3px #1bd96a";
+    curserinthButton.classList.add("button-modrinth-valid");
     if (doesModrinthExist) {
         modrinthG.setAttribute("fill", validColor);
-        modrinthButton.style.boxShadow = "inset 0px 0px 0px 3px #1bd96a";
+        modrinthButton.classList.add("button-modrinth-valid");
     } else if (doesModrinthThrowError) {
         modrinthG.setAttribute("fill", errorColor);
-        modrinthButton.style.boxShadow = "inset 0px 0px 0px 3px #ff496e";
+        modrinthButton.classList.add("button-modrinth-error");
     } else {
         console.log("got a warning here");
-        modrinthG.setAttribute("fill", waringColor);
-        modrinthButton.style.boxShadow = "inset 0px 0px 0px 3px #ffa347";
+        modrinthG.setAttribute("fill", warningColor);
+        modrinthButton.classList.add("button-modrinth-warning");
     }
     modrinthG.setAttribute("data-v-4efc4064", "");
 
