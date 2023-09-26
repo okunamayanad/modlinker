@@ -185,7 +185,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
         // get the href
         var href = link.getAttribute("href");
 
-        if (href.includes("curseforge") && href.includes("mc-mods")) {
+        if (href?.includes("curseforge") && href?.includes("mc-mods")) {
             console.log("found curseforge link", href);
             // get the project name
             let linkArgs = href.split("/");
@@ -216,7 +216,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             let aContainer = addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError, true);
             await new Promise(resolve => setTimeout(resolve, 10));
             aContainer.classList.remove("loading-anim-modrinth");
-        } else if (href.includes("9minecraft") && (href.includes("-mod/") || href.includes("-api/"))) {
+        } else if (href?.includes("9minecraft") && (href?.includes("-mod/") || href?.includes("-api/"))) {
             console.log("found 9minecraft link", href);
             let linkArgs = href.split("/");
             linkArgs = linkArgs.slice(3);
@@ -230,7 +230,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             let aContainer = addModrinthButton(doesModrinthExist, projectName, result, false);
             await new Promise(resolve => setTimeout(resolve, 10));
             aContainer.classList.remove("loading-anim-modrinth");
-        } else if (href.includes("planetminecraft") && (href.includes("/mod/") || href.includes("/data-pack/"))) {
+        } else if (href?.includes("planetminecraft") && (href?.includes("/mod/") || href?.includes("/data-pack/"))) {
             console.log("found pmc link", href);
             let linkArgs = href.split("/");
             linkArgs = linkArgs.slice(4);
@@ -244,7 +244,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             let aContainer = addModrinthButton(doesModrinthExist, projectName, result, false);
             await new Promise(resolve => setTimeout(resolve, 10));
             aContainer.classList.remove("loading-anim-modrinth");
-        } else if (href.includes("mc-mod.net") && (href.includes("-mod/") || href.includes("-api/"))) {
+        } else if (href?.includes("mc-mod.net") && (href?.includes("-mod/") || href?.includes("-api/"))) {
             console.log("found mcmod link", href);
             let linkArgs = href.split("/");
             linkArgs = linkArgs.slice(3);
