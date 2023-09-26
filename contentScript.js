@@ -216,7 +216,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             let aContainer = addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError, true);
             await new Promise(resolve => setTimeout(resolve, 10));
             aContainer.classList.remove("loading-anim-modrinth");
-        } else if (href?.includes("9minecraft") && (href?.includes("-mod/") || href?.includes("-api/"))) {
+        } else if (href?.includes("9minecraft") && !href?.includes("shader") && (href?.includes("-mod/") || href?.includes("-api/"))) {
             console.log("found 9minecraft link", href);
             let linkArgs = href.split("/");
             linkArgs = linkArgs.slice(3);
