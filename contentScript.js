@@ -180,6 +180,7 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
 
     for (var i = 0; i < results.length; i++) {
         var result = results[i];
+        if (result.tagName !== "DIV") continue;
         console.log(result);
         var link = await waitForElm(result, "a");
         // get the href
@@ -273,16 +274,15 @@ function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthT
             }
 
             var waitingElmInterval = setInterval(() => {
-                console.log("test")
                 const element = parent.querySelector(selector);
                 console.log("element", element);
                 if (element) {
                     resolve(element);
                     clearInterval(waitingElmInterval);
                 }
-                if (document.readyState === "complete"){
+                if (document.readyState === "complete") {
                     const pageLoadedElm = parent.querySelector(selector);
-                    if(pageLoadedElm) return resolve(pageLoadedElm);
+                    if (pageLoadedElm) return resolve(pageLoadedElm);
                     return resolve(1);
                 }
             }, 10);
