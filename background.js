@@ -25,3 +25,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
   return true
 })
+
+chrome.action.onClicked.addListener((tab) => {
+  chrome.tabs.create({
+		url: 'https://modrinth.com',
+	});
+});
+// void browser.tabs.create({
+//   openerTabId: tab.id,
+//   url: 'https://modrinth.com/',
+// });
