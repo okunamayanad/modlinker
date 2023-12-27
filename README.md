@@ -34,4 +34,6 @@ Extract the zip and load the folder you downloaded
 
 Load the folder you extracted
 
+![Load the folder you extracted](https://github.com/okunamayanad/modlinker/assets/108594296/176354a0-e1f0-47a2-9490-2567a8779b47)
+
 And you're good to go!
