@@ -36,7 +36,9 @@ style.innerHTML = `
 }`;
 document.head.appendChild(style);
 
-let whiteTheme = document.body.style.background == "#fff"
+let whiteTheme = window.getComputedStyle(document.body).getPropertyValue('background').includes("rgb(255, 255, 255)")
+console.log("whiteTheme: " + whiteTheme);
+console.log(window.getComputedStyle(document.body).getPropertyValue('background'))
 
 function addModrinthButton(doesModrinthExist, projectName, result, doesModrinthThrowError, isCurseforge) {
     let modrinthLink;
