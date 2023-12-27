@@ -15,20 +15,23 @@ Avoids CurseForge and other Minecraft mod links (9Minecraft, Planet Minecraft, m
 ### Warning! This version is the most recent one that I and other contributers are currently working on. As a result of highly experimental stuff, you'll face a lot of bugs!
 <br>
 <br>
+
 Download the current version from GitHub 
 
-![download zip](https://github.com/okunamayanad/modlinker/assets/108594296/8b8b9622-12ee-476d-8d69-84db9cae7e15)
+![Download the current version from GitHub](https://github.com/okunamayanad/modlinker/assets/108594296/8b8b9622-12ee-476d-8d69-84db9cae7e15)
 
 Open up extensions page
  
-![open extensions page](https://github.com/okunamayanad/modlinker/assets/108594296/7b7cfb87-d8cd-4a90-82b0-de12c75a38d5)
+![Open up extensions page](https://github.com/okunamayanad/modlinker/assets/108594296/6c84c7c7-2c32-4188-b3c3-c4db95985447)
 
 Turn on Developer mode
 
-asfd
+![Turn on Developer mode](https://github.com/okunamayanad/modlinker/assets/108594296/b3d2e9dd-0f60-4245-b694-de65a470733a)
 
 Extract the zip and load the folder you downloaded
 
-asdf
+![Extract the zip and load the folder you downloaded](https://github.com/okunamayanad/modlinker/assets/108594296/fe73c8c0-02e5-4158-ab26-900190c10778)
+
+Load the folder you extracted
 
 And you're good to go!
