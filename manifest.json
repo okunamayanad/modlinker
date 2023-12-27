@@ -16,7 +16,7 @@
     "type": "module"
   },
   "action": {
-    "default_title": "Click to show an alert"
+    "default_title": "ModLinker"
   },
 
   "content_scripts": [
