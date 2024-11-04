@@ -1,7 +1,14 @@
 # modlinker
-Avoids CurseForge and other Minecraft mod links (9Minecraft, Planet Minecraft, mc-mod), by adding Modrinth links next to them in Google search results.
+Displays a Modrinth link next to CurseForge and other Minecraft mod links (9Minecraft, Planet Minecraft, mc-mod).
 
 ![image](https://github.com/okunamayanad/modlinker/assets/108594296/7c903397-e691-4060-895e-170c516177f8)
+
+As Modrinth doesn't have as good as a SEO of these websites, Modrinth tends to be at the lower results, sometimes not even in the first page.
+
+I don't want to use CurseForge because of their policies and just their UX being much worse than Modrinth imo.
+
+I think it's not just me that wants to search for a mod and just click on a Modrinth link right away, so if you think the same way as I do, [why not just install the extension right now?](https://chromewebstore.google.com/detail/modlinker/kffdacoooplmddelfddkndfhgenddgke)
+
 
 
 # How to install?
