@@ -1,9 +1,28 @@
 .loading-anim-modrinth {
   transform: translateY(64px) !important;
+  opacity: 0 !important;
+}
+
+.button-wrapper-modrinth {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex;
+  vertical-align: middle;
+  height: 0;
+  justify-content: flex-end;
+  transform: translateY(0px);
+  opacity: 1;
+  gap: 10px;
 }
 
 .button-modrinth {
   transition: all 0.5s cubic-bezier(0.46, 0.01, 0, 1) !important;
+  max-width: 120px;
+  padding: 5px;
+  border-radius: 5px;
+  width: auto;
+  height: 20px;
+  display: block;
+  transform: translateY(-64px);
 }
 .button-modrinth:hover {
   transform: translateY(-70px) !important;
