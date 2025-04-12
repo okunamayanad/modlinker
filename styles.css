@@ -1,0 +1,34 @@
+.loading-anim-modrinth {
+  transform: translateY(64px) !important;
+}
+
+.button-modrinth {
+  transition: all 0.5s cubic-bezier(0.46, 0.01, 0, 1) !important;
+}
+.button-modrinth:hover {
+  transform: translateY(-70px) !important;
+}
+.button-modrinth:active {
+  transform: translateY(-66px) !important;
+}
+
+.button-modrinth-valid {
+  box-shadow: inset 0px 0px 0px 1px #1db96a;
+}
+.button-modrinth-valid:hover {
+  box-shadow: inset 0px 0px 0px 2px #1db96a;
+}
+
+.button-modrinth-warning {
+  box-shadow: inset 0px 0px 0px 1px #ffa347;
+}
+.button-modrinth-warning:hover {
+  box-shadow: inset 0px 0px 0px 2px #ffa347;
+}
+
+.button-modrinth-error {
+  box-shadow: inset 0px 0px 0px 1px #ff496e;
+}
+.button-modrinth-error {
+  box-shadow: inset 0px 0px 0px 1px #ff496e;
+}
