@@ -1,4 +1,5 @@
 # modlinker
+
 Displays a Modrinth link next to CurseForge and other Minecraft mod sites (9Minecraft, Planet Minecraft, mc-mod).
 
 ![image](https://github.com/okunamayanad/modlinker/assets/108594296/7c903397-e691-4060-895e-170c516177f8)
@@ -9,27 +10,28 @@ I don't want to use CurseForge because of their policies and just their UX being
 
 I think it's not just me that wants to search for a mod and just click on a Modrinth link right away, so if you think the same way as I do, [why not just install the extension right now?](https://chromewebstore.google.com/detail/modlinker/kffdacoooplmddelfddkndfhgenddgke)
 
-
-
 # How to install?
+
 ## From Chrome Webstore
+
 [Go to the Chrome webstore and add the extension to your extensions](https://chromewebstore.google.com/detail/modlinker/kffdacoooplmddelfddkndfhgenddgke)
 
 <br>
 <br>
 
 ## Right from the repo
+
 > [!NOTE]
 > This version is the most recent one that contributors are currently working on. Expect bugs!
-<br>
-<br>
+> <br>
+> <br>
 
-Download the current version from GitHub 
+Download the current version from GitHub
 
 ![Download the current version from GitHub](https://github.com/okunamayanad/modlinker/assets/108594296/8b8b9622-12ee-476d-8d69-84db9cae7e15)
 
 Open up extensions page
- 
+
 ![Open up extensions page](https://github.com/okunamayanad/modlinker/assets/108594296/6c84c7c7-2c32-4188-b3c3-c4db95985447)
 
 Turn on Developer mode

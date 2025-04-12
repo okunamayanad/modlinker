@@ -9,27 +9,29 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       sendResponse(cache[request[1]]);
       return true;
     }
-    fetch(request[1]).then(response => {
-      console.log("response", response);
-      if (response.status == 404) {
-        cache[request[1]] = false;
+    fetch(request[1])
+      .then((response) => {
+        console.log("response", response);
+        if (response.status == 404) {
+          cache[request[1]] = false;
+          sendResponse(false);
+        } else {
+          cache[request[1]] = true;
+          sendResponse(true);
+        }
+      })
+      .catch((err) => {
+        console.log("error", err);
         sendResponse(false);
-      } else {
-        cache[request[1]] = true;
-        sendResponse(true);
-      }
-    }).catch(err => {
-      console.log("error", err);
-      sendResponse(false);
-    })
+      });
   }
-  return true
-})
+  return true;
+});
 
 chrome.action.onClicked.addListener((tab) => {
   chrome.tabs.create({
-		url: 'https://modrinth.com',
-	});
+    url: "https://modrinth.com",
+  });
 });
 // void browser.tabs.create({
 //   openerTabId: tab.id,
