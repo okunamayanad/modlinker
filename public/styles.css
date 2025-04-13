@@ -14,7 +14,7 @@
 }
 
 .button-modlinker {
-  color: lightslategray;
+  color: lightslategray !important;
   box-shadow: inset 0px 0px 0px 1px lightslategray;
   transition: all 0.5s cubic-bezier(0.46, 0.01, 0, 1) !important;
   max-width: 120px;
@@ -41,11 +41,11 @@
   opacity: 1;
   cursor: pointer;
 
-  color: #1db96a;
+  color: #1db96a !important;
   box-shadow: inset 0px 0px 0px 1px #1db96a;
 }
 .button-modlinker-valid:hover {
-  color: #1db96a;
+  color: #1db96a !important;
   box-shadow: inset 0px 0px 0px 2px #1db96a;
 }
 
