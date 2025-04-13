@@ -1,0 +1,27 @@
+{
+  "name": "modlinker",
+  "version": "2.0.0",
+  "description": "Puts Modrinth links next to other mod websites on search results.",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode=development --watch --config config/webpack.config.js",
+    "build": "webpack --mode=production --config config/webpack.config.js",
+    "pack": "node pack.js",
+    "repack": "npm run build && npm run pack",
+    "format": "prettier --write --ignore-unknown \"{config,public,src}/**/*.{html,css,js,ts,json}\""
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.16",
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.11.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "prettier": "^2.8.8",
+    "webpack": "^5.99.5",
+    "webpack-cli": "^4.10.0",
+    "webpack-merge": "^5.10.0",
+    "@types/chrome": "^0.0.280",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3"
+  }
+}
