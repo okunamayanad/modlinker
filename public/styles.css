@@ -28,14 +28,19 @@
   cursor: not-allowed;
 }
 
-.button-modlinker-valid:hover {
-  transform: translateY(-6px) !important;
+.button-modlinker-valid:hover,
+.button-modlinker-warning:hover {
+  transform: translateY(-70px) !important;
 }
-.button-modlinker-valid:active {
-  transform: translateY(-2px) !important;
+.button-modlinker-valid:active,
+.button-modlinker-warning:active {
+  transform: translateY(-66px) !important;
 }
 
 .button-modlinker-valid {
+  opacity: 1;
+  cursor: pointer;
+
   color: #1db96a;
   box-shadow: inset 0px 0px 0px 1px #1db96a;
 }
@@ -45,6 +50,9 @@
 }
 
 .button-modlinker-warning {
+  opacity: 1;
+  cursor: pointer;
+
   color: #ffa347;
   box-shadow: inset 0px 0px 0px 1px #ffa347;
 }
