@@ -15,7 +15,6 @@
   "action": {
     "default_title": "ModLinker"
   },
-  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": [
