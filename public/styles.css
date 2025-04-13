@@ -45,7 +45,6 @@
   box-shadow: inset 0px 0px 0px 1px #1db96a;
 }
 .button-modlinker-valid:hover {
-  color: #1db96a !important;
   box-shadow: inset 0px 0px 0px 2px #1db96a;
 }
 
@@ -53,19 +52,17 @@
   opacity: 1;
   cursor: pointer;
 
-  color: #ffa347;
+  color: #ffa347 !important;
   box-shadow: inset 0px 0px 0px 1px #ffa347;
 }
 .button-modlinker-warning:hover {
-  color: #ffa347;
   box-shadow: inset 0px 0px 0px 2px #ffa347;
 }
 
 .button-modlinker-error {
-  color: #ff496e;
+  color: #ff496e !important;
   box-shadow: inset 0px 0px 0px 1px #ff496e;
 }
-.button-modlinker-error {
-  color: #ff496e;
-  box-shadow: inset 0px 0px 0px 1px #ff496e;
+.button-modlinker-error:hover {
+  box-shadow: inset 0px 0px 0px 2px #ff496e;
 }
