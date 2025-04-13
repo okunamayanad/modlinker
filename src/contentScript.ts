@@ -25,15 +25,21 @@ searchResults.forEach((element) => {
   );
 
   (async () => {
+    const modrinthButton =
+      modrinthButtonContainer.querySelector('.button-modlinker')!;
+    console.log('modrinthButton', modrinthButton);
+
     const isOnModrinth = await chrome.runtime.sendMessage([
       'cacheCheck',
       `https://api.modrinth.com/v2/project/${extractedInfo.modId}`,
     ]);
 
-    const modrinthButton =
-      modrinthButtonContainer.querySelector('.button-modlinker')!;
+    if (isOnModrinth instanceof Error) {
+      console.error('Error checking Modrinth:', isOnModrinth);
 
-    console.log('modrinthButton', modrinthButton);
+      modrinthButton.classList.add('button-modlinker-error');
+      return;
+    }
 
     modrinthButton.classList.add(
       isOnModrinth ? 'button-modlinker-valid' : 'button-modlinker-warning'

@@ -35,10 +35,10 @@ chrome.runtime.onMessage.addListener(function (
           cache.set(request[1], { data: response.ok, time: Date.now() });
           sendResponse(response.ok);
         })
-        .catch((err) => {
+        .catch((err: Error) => {
           console.log('fetch error', err);
           console.log('error', err);
-          sendResponse(false);
+          sendResponse(err);
         });
       return true; // Will respond asynchronously
 
