@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ModLinker",
-  "version": "1.2.5",
+  "version": "2.0.1",
 
   "description": "Avoids CurseForge links, replacing them with Modrinth links in Google search results.",
 

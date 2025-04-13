@@ -1,6 +1,6 @@
 {
   "name": "modlinker",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Puts Modrinth links next to other mod websites on search results.",
   "private": true,
   "scripts": {
