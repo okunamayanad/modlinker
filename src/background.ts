@@ -1,21 +1,52 @@
-'use strict';
+interface ICache {
+  data: boolean;
+  time: number;
+}
 
-// With background scripts you can communicate with popup
-// and contentScript files.
-// For more information on background script,
-// See https://developer.chrome.com/extensions/background_pages
+let cache = new Map<string, ICache>();
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'GREETINGS') {
-    const message = `Hi ${
-      sender.tab ? 'Con' : 'Pop'
-    }, my name is Bac. I am from Background. It's great to hear from you.`;
+const cacheTTL = 1000 * 60 * 60; // 1 hour
 
-    // Log message coming from the `request` parameter
-    console.log(request.payload.message);
-    // Send a response message
-    sendResponse({
-      message,
-    });
+chrome.runtime.onMessage.addListener(function (
+  request: string[],
+  sender,
+  sendResponse
+) {
+  switch (request[0]) {
+    case 'cacheCheck':
+      const cacheData = cache.get(request[1]);
+
+      // Cache Hit
+      if (cacheData !== undefined) {
+        // Check if cache is expired
+        if (cacheData.time + cacheTTL < Date.now()) {
+          cache.delete(request[1]);
+          return false;
+        } else {
+          sendResponse(cacheData.data);
+          return true;
+        }
+      }
+
+      // Cache Miss
+      fetch(request[1])
+        .then((response) => {
+          cache.set(request[1], { data: response.ok, time: Date.now() });
+          sendResponse(response.ok);
+        })
+        .catch((err) => {
+          console.log('error', err);
+          sendResponse(false);
+        });
+      break;
+
+    default:
+      break;
   }
+});
+
+chrome.action.onClicked.addListener((tab) => {
+  chrome.tabs.create({
+    url: 'https://modrinth.com',
+  });
 });
