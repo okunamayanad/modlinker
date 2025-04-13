@@ -11,31 +11,36 @@ chrome.runtime.onMessage.addListener(function (
 ) {
   switch (request[0]) {
     case 'cacheCheck':
+      console.log('cache', cache);
+
       const cacheData = cache.get(request[1]);
+      console.log('cacheData', cacheData);
 
       // Cache Hit
       if (cacheData !== undefined) {
+        console.log('cacheHit');
         // Check if cache is expired
         if (cacheData.time + cacheTTL < Date.now()) {
           cache.delete(request[1]);
-          return false;
         } else {
           sendResponse(cacheData.data);
-          return true;
+          break;
         }
       }
 
       // Cache Miss
       fetch(request[1])
         .then((response) => {
+          console.log('response', response);
           cache.set(request[1], { data: response.ok, time: Date.now() });
           sendResponse(response.ok);
         })
         .catch((err) => {
+          console.log('fetch error', err);
           console.log('error', err);
           sendResponse(false);
         });
-      break;
+      return true; // Will respond asynchronously
 
     default:
       break;

@@ -17,10 +17,36 @@ searchResults.forEach((element) => {
   console.log('extractedInfo', extractedInfo);
 
   // add the modrinth button
-  MakeModrinthButton(
+  const modrinthButtonContainer = MakeModrinthButton(
     extractedInfo.modId,
     element.querySelector('div')!.firstElementChild!.firstElementChild!
       .firstElementChild! as HTMLElement,
     false // TODO: actually check white theme
   );
+
+  (async () => {
+    const isOnModrinth = await chrome.runtime.sendMessage([
+      'cacheCheck',
+      `https://api.modrinth.com/v2/project/${extractedInfo.modId}`,
+    ]);
+
+    const modrinthButton =
+      modrinthButtonContainer.querySelector('.button-modlinker')!;
+
+    console.log('modrinthButton', modrinthButton);
+
+    modrinthButton.classList.add(
+      isOnModrinth ? 'button-modlinker-valid' : 'button-modlinker-warning'
+    );
+
+    modrinthButton.setAttribute(
+      'href',
+      isOnModrinth
+        ? `https://modrinth.com/mod/${extractedInfo.modId}`
+        : `https://modrinth.com/mods?q=${extractedInfo.modId.replace(
+            /[-_]/g,
+            '+'
+          )}`
+    );
+  })();
 });
