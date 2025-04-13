@@ -1,0 +1,63 @@
+.loading-anim-modlinker {
+  transform: translateY(64px) !important;
+  opacity: 0 !important;
+}
+
+.button-wrapper-modlinker {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex;
+  vertical-align: middle;
+  height: 0;
+  justify-content: flex-end;
+  gap: 10px;
+  z-index: 100;
+}
+
+.button-modlinker {
+  color: lightslategray;
+  box-shadow: inset 0px 0px 0px 1px lightslategray;
+  transition: all 0.5s cubic-bezier(0.46, 0.01, 0, 1) !important;
+  max-width: 120px;
+  padding: 5px;
+  border-radius: 5px;
+  width: auto;
+  height: 20px;
+  display: block;
+
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.button-modlinker-valid:hover {
+  transform: translateY(-6px) !important;
+}
+.button-modlinker-valid:active {
+  transform: translateY(-2px) !important;
+}
+
+.button-modlinker-valid {
+  color: #1db96a;
+  box-shadow: inset 0px 0px 0px 1px #1db96a;
+}
+.button-modlinker-valid:hover {
+  color: #1db96a;
+  box-shadow: inset 0px 0px 0px 2px #1db96a;
+}
+
+.button-modlinker-warning {
+  color: #ffa347;
+  box-shadow: inset 0px 0px 0px 1px #ffa347;
+}
+.button-modlinker-warning:hover {
+  color: #ffa347;
+  box-shadow: inset 0px 0px 0px 2px #ffa347;
+}
+
+.button-modlinker-error {
+  color: #ff496e;
+  box-shadow: inset 0px 0px 0px 1px #ff496e;
+}
+.button-modlinker-error {
+  color: #ff496e;
+  box-shadow: inset 0px 0px 0px 1px #ff496e;
+}

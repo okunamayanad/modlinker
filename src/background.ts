@@ -1,7 +1,4 @@
-interface ICache {
-  data: boolean;
-  time: number;
-}
+import { ICache } from './interfaces/cache';
 
 let cache = new Map<string, ICache>();
 
