@@ -9,11 +9,22 @@ const PATHS = require('./paths');
 const config = (env, argv) =>
   merge(common, {
     entry: {
-      popup: PATHS.src + '/popup.js',
-      contentScript: PATHS.src + '/contentScript.js',
-      background: PATHS.src + '/background.js',
+      contentScript: PATHS.src + '/contentScript.ts',
+      background: PATHS.src + '/background.ts',
     },
     devtool: argv.mode === 'production' ? false : 'source-map',
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
+      ],
+    },
+    resolve: {
+      extensions: ['.ts', '.js'], // Add .ts to resolve imports without extensions
+    },
   });
 
 module.exports = config;

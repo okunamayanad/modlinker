@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Use ES6 for Chrome compatibility
+    "module": "es6", // Required for Webpack compatibility
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in file names
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./build", // Output directory
+    "sourceMap": true // Optional: Enables source maps for easier debugging
+  },
+  "include": ["src"], // Include all files in the src directory
+  "exclude": ["node_modules"]
+}

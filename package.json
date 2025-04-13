@@ -19,6 +19,9 @@
     "prettier": "^2.8.8",
     "webpack": "^5.99.5",
     "webpack-cli": "^4.10.0",
-    "webpack-merge": "^5.10.0"
+    "webpack-merge": "^5.10.0",
+    "@types/chrome": "^0.0.280",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3"
   }
 }
