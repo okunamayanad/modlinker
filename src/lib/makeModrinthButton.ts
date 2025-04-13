@@ -102,7 +102,7 @@ export function MakeModrinthButton(
   // workaround for the button to be added to the DOM before the animation starts
   setTimeout(() => {
     modrinthButtonContainer.classList.remove('loading-anim-modlinker');
-  }, 0);
+  }, 10);
 
   return modrinthButtonContainer;
 }
