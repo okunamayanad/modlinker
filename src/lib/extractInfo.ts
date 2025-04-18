@@ -13,7 +13,8 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
     // check here if breaks on google update
     'div:nth-child(1) > div > div:nth-child(2) > div > div > span > a'
   );
-  const link = linkElement?.getAttribute('href') || '';
+  let link = linkElement?.getAttribute('href') || '';
+  if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
 
   let domain = link.split('/')[2];
   if (domain === undefined) return false;
@@ -51,7 +52,6 @@ function CurseForgeHandler(link: string): SearchResultInfo | false {
 
 // https://www.9minecraft.net/fabric-api/
 function NineMinecraftHandler(link: string): SearchResultInfo | false {
-  if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
   const splitLink = link.split('/');
   if (splitLink.length !== 4) return false;
 
@@ -65,8 +65,6 @@ function NineMinecraftHandler(link: string): SearchResultInfo | false {
 
 // https://www.planetminecraft.com/mods/tag/create/
 function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
-  if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
-
   if (!link.includes('/mods/tag/')) return false;
 
   const splitLink = link.split('/');
@@ -82,8 +80,6 @@ function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
 
 // https://tlauncher.org/en/mods-1165_115/netherite-scrap-from-piglin-brutes-1-16-5_26425.html
 function TLauncherHandler(link: string): SearchResultInfo | false {
-  if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
-
   const splitLink = link.split('/');
   if (splitLink.length !== 6) return false;
 
@@ -103,7 +99,6 @@ function TLauncherHandler(link: string): SearchResultInfo | false {
       break;
     }
   }
-  
 
   return {
     modId: splitModId.join('-'),
