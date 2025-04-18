@@ -1,11 +1,14 @@
 import { SearchResultInfo } from '../interfaces/searchResultInfo';
 
-const supportedDomains = [
-  'curseforge.com',
-  '9minecraft.net',
-  'planetminecraft.com',
-  'tlauncher.org',
-];
+const supportedDomainHandlers: Record<
+  string,
+  (link: string) => SearchResultInfo | false
+> = {
+  'curseforge.com': CurseForgeHandler,
+  '9minecraft.net': NineMinecraftHandler,
+  'planetminecraft.com': PlanetMinecraftHandler,
+  'tlauncher.org': TLauncherHandler,
+};
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   const titleContainer = element.firstChild as HTMLElement;
@@ -21,24 +24,9 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   if (domain.includes('www.')) {
     domain = domain.split('www.')[1];
   }
-  if (!supportedDomains.includes(domain)) return false;
 
-  switch (domain) {
-    case 'curseforge.com':
-      return CurseForgeHandler(link);
-
-    case '9minecraft.net':
-      return NineMinecraftHandler(link);
-
-    case 'planetminecraft.com':
-      return PlanetMinecraftHandler(link);
-
-    case 'tlauncher.org':
-      return TLauncherHandler(link);
-
-    default:
-      return false;
-  }
+  if (supportedDomainHandlers[domain] === undefined) return false;
+  return supportedDomainHandlers[domain](link);
 }
 
 function CurseForgeHandler(link: string): SearchResultInfo | false {
