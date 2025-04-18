@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ModLinker",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Puts Modrinth links next to other mod websites on search results.",
   "icons": {
     "16": "icons/icon_16.png",
