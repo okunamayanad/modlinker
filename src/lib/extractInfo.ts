@@ -1,6 +1,10 @@
 import { SearchResultInfo } from '../interfaces/searchResultInfo';
 
-const supportedDomains = ['curseforge.com', '9minecraft.net'];
+const supportedDomains = [
+  'curseforge.com',
+  '9minecraft.net',
+  'planetminecraft.com',
+];
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   const titleContainer = element.firstChild as HTMLElement;
@@ -24,6 +28,9 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
     case '9minecraft.net':
       return NineMinecraftHandler(link);
 
+    case 'planetminecraft.com':
+      return PlanetMinecraftHandler(link);
+
     default:
       return false;
   }
@@ -38,10 +45,28 @@ function CurseForgeHandler(link: string): SearchResultInfo | false {
   };
 }
 
+// https://www.9minecraft.net/fabric-api/
 function NineMinecraftHandler(link: string): SearchResultInfo | false {
   if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
   const splitLink = link.split('/');
   if (splitLink.length !== 4) return false;
+
+  const modId = splitLink[splitLink.length - 1];
+  if (modId === undefined) return false;
+
+  return {
+    modId: modId,
+  };
+}
+
+// https://www.planetminecraft.com/mods/tag/create/
+function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
+  if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
+
+  if (!link.includes('/mods/tag/')) return false;
+
+  const splitLink = link.split('/');
+  if (splitLink.length !== 6) return false;
 
   const modId = splitLink[splitLink.length - 1];
   if (modId === undefined) return false;
