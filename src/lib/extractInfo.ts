@@ -4,6 +4,7 @@ const supportedDomains = [
   'curseforge.com',
   '9minecraft.net',
   'planetminecraft.com',
+  'tlauncher.org',
 ];
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
@@ -30,6 +31,9 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
 
     case 'planetminecraft.com':
       return PlanetMinecraftHandler(link);
+
+    case 'tlauncher.org':
+      return TLauncherHandler(link);
 
     default:
       return false;
@@ -73,5 +77,35 @@ function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
 
   return {
     modId: modId,
+  };
+}
+
+// https://tlauncher.org/en/mods-1165_115/netherite-scrap-from-piglin-brutes-1-16-5_26425.html
+function TLauncherHandler(link: string): SearchResultInfo | false {
+  if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
+
+  const splitLink = link.split('/');
+  if (splitLink.length !== 6) return false;
+
+  if (!splitLink[4].includes('mods')) return false;
+
+  let modId = splitLink[splitLink.length - 1].split('_')[0];
+  if (modId === undefined) return false;
+
+  let splitModId = modId.split('-');
+
+  for (let i = splitModId.length - 1; i >= 0; i--) {
+    const element = splitModId[i];
+
+    if (!isNaN(Number(element))) {
+      splitModId.splice(i, 1);
+    } else {
+      break;
+    }
+  }
+  
+
+  return {
+    modId: splitModId.join('-'),
   };
 }
