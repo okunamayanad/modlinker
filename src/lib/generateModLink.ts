@@ -5,7 +5,13 @@ const linkMap: Record<SearchResultInfo['type'], string[]> = {
   plugin: ['https://modrinth.com/plugin/', 'https://modrinth.com/plugins?q='],
 };
 
-export async function generateModLink(info: SearchResultInfo) {
+export async function generateModLink(info: SearchResultInfo): Promise<
+  | {
+      link: string;
+      isOnModrinth: boolean;
+    }
+  | { error: true; errorMessage: string }
+> {
   const isOnModrinth = await chrome.runtime.sendMessage([
     'cacheCheck',
     `https://api.modrinth.com/v2/project/${info.modId}`,
@@ -13,7 +19,10 @@ export async function generateModLink(info: SearchResultInfo) {
 
   if (isOnModrinth instanceof Error) {
     console.error('Error checking Modrinth:', isOnModrinth);
-    return 'err';
+    return {
+      error: true,
+      errorMessage: 'Error checking Modrinth',
+    };
   }
 
   const link = isOnModrinth

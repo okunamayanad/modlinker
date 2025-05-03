@@ -34,7 +34,7 @@ searchResults.forEach((element) => {
 
     const modrinthLink = await generateModLink(extractedInfo);
 
-    if (modrinthLink === 'err') {
+    if ('error' in modrinthLink) {
       modrinthButton.classList.add('button-modlinker-error');
       return;
     }
