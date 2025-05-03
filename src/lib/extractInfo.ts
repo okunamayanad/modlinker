@@ -9,6 +9,7 @@ const supportedDomainHandlers: Record<
   'planetminecraft.com': PlanetMinecraftHandler,
   'tlauncher.org': TLauncherHandler,
   'spigotmc.org': SpigotMCHandler,
+  'dev.bukkit.org': BukkitHandler,
 };
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
@@ -111,6 +112,23 @@ function SpigotMCHandler(link: string): SearchResultInfo | false {
   const resourcesIndex = splitLink.indexOf('resources');
 
   const modId = splitLink[resourcesIndex + 1].split('.')[0];
+  if (modId === undefined) return false;
+
+  return {
+    type: 'plugin',
+    modId: modId,
+  };
+}
+
+// https://dev.bukkit.org/projects/grief-prevention
+// https://dev.bukkit.org/projects/grief-prevention/images
+function BukkitHandler(link: string): SearchResultInfo | false {
+  const splitLink = link.split('/');
+  if (!splitLink.includes('projects')) return false;
+
+  const projectsIndex = splitLink.indexOf('projects');
+
+  const modId = splitLink[projectsIndex + 1];
   if (modId === undefined) return false;
 
   return {
