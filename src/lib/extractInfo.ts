@@ -8,6 +8,7 @@ const supportedDomainHandlers: Record<
   '9minecraft.net': NineMinecraftHandler,
   'planetminecraft.com': PlanetMinecraftHandler,
   'tlauncher.org': TLauncherHandler,
+  'spigotmc.org': SpigotMCHandler,
 };
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
@@ -39,7 +40,7 @@ function CurseForgeHandler(link: string): SearchResultInfo | false {
   };
 }
 
-// https://www.9minecraft.net/fabric-api/
+// https://www.9minecraft.net/fabric-api
 function NineMinecraftHandler(link: string): SearchResultInfo | false {
   const splitLink = link.split('/');
   if (splitLink.length !== 4) return false;
@@ -53,7 +54,7 @@ function NineMinecraftHandler(link: string): SearchResultInfo | false {
   };
 }
 
-// https://www.planetminecraft.com/mods/tag/create/
+// https://www.planetminecraft.com/mods/tag/create
 function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
   if (!link.includes('/mods/tag/')) return false;
 
@@ -94,5 +95,22 @@ function TLauncherHandler(link: string): SearchResultInfo | false {
   return {
     type: 'mod',
     modId: splitModId.join('-'),
+  };
+}
+
+// https://www.spigotmc.org/resources/skinsrestorer.2124
+// https://www.spigotmc.org/resources/skinsrestorer.2124/updates
+function SpigotMCHandler(link: string): SearchResultInfo | false {
+  const splitLink = link.split('/');
+  if (!splitLink.includes('resources')) return false;
+
+  const resourcesIndex = splitLink.indexOf('resources');
+
+  const modId = splitLink[resourcesIndex + 1].split('.')[0];
+  if (modId === undefined) return false;
+
+  return {
+    type: 'plugin',
+    modId: modId,
   };
 }
