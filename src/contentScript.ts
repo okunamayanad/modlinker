@@ -21,7 +21,8 @@ searchResults.forEach((element) => {
     extractedInfo.modId,
     element.querySelector('div')!.firstElementChild!.firstElementChild!
       .firstElementChild! as HTMLElement,
-    false // TODO: actually check white theme
+    window.getComputedStyle(document.body).backgroundColor ===
+      'rgb(255, 255, 255)'
   );
 
   (async () => {
