@@ -34,6 +34,7 @@ function CurseForgeHandler(link: string): SearchResultInfo | false {
   if (modId === undefined) return false;
 
   return {
+    type: 'mod',
     modId: modId,
   };
 }
@@ -47,6 +48,7 @@ function NineMinecraftHandler(link: string): SearchResultInfo | false {
   if (modId === undefined) return false;
 
   return {
+    type: 'mod',
     modId: modId,
   };
 }
@@ -62,6 +64,7 @@ function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
   if (modId === undefined) return false;
 
   return {
+    type: 'mod',
     modId: modId,
   };
 }
@@ -89,6 +92,7 @@ function TLauncherHandler(link: string): SearchResultInfo | false {
   }
 
   return {
+    type: 'mod',
     modId: splitModId.join('-'),
   };
 }
