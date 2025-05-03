@@ -8,6 +8,8 @@ const supportedDomainHandlers: Record<
   '9minecraft.net': NineMinecraftHandler,
   'planetminecraft.com': PlanetMinecraftHandler,
   'tlauncher.org': TLauncherHandler,
+  'spigotmc.org': SpigotMCHandler,
+  'dev.bukkit.org': BukkitHandler,
 };
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
@@ -29,16 +31,21 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   return supportedDomainHandlers[domain](link);
 }
 
+// https://www.curseforge.com/minecraft/mc-mods/create
 function CurseForgeHandler(link: string): SearchResultInfo | false {
-  const modId = link.split('/')[5];
-  if (modId === undefined) return false;
+  const type = link.split('/')[4];
+  if (type !== 'mc-mods' && type !== 'bukkit-plugins') return false;
+
+  const id = link.split('/')[5];
+  if (id === undefined) return false;
 
   return {
-    modId: modId,
+    type: type === 'mc-mods' ? 'mod' : 'plugin',
+    modId: id,
   };
 }
 
-// https://www.9minecraft.net/fabric-api/
+// https://www.9minecraft.net/fabric-api
 function NineMinecraftHandler(link: string): SearchResultInfo | false {
   const splitLink = link.split('/');
   if (splitLink.length !== 4) return false;
@@ -47,11 +54,12 @@ function NineMinecraftHandler(link: string): SearchResultInfo | false {
   if (modId === undefined) return false;
 
   return {
+    type: 'mod',
     modId: modId,
   };
 }
 
-// https://www.planetminecraft.com/mods/tag/create/
+// https://www.planetminecraft.com/mods/tag/create
 function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
   if (!link.includes('/mods/tag/')) return false;
 
@@ -62,6 +70,7 @@ function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
   if (modId === undefined) return false;
 
   return {
+    type: 'mod',
     modId: modId,
   };
 }
@@ -89,6 +98,41 @@ function TLauncherHandler(link: string): SearchResultInfo | false {
   }
 
   return {
+    type: 'mod',
     modId: splitModId.join('-'),
+  };
+}
+
+// https://www.spigotmc.org/resources/skinsrestorer.2124
+// https://www.spigotmc.org/resources/skinsrestorer.2124/updates
+function SpigotMCHandler(link: string): SearchResultInfo | false {
+  const splitLink = link.split('/');
+  if (!splitLink.includes('resources')) return false;
+
+  const resourcesIndex = splitLink.indexOf('resources');
+
+  const modId = splitLink[resourcesIndex + 1].split('.')[0];
+  if (modId === undefined) return false;
+
+  return {
+    type: 'plugin',
+    modId: modId,
+  };
+}
+
+// https://dev.bukkit.org/projects/grief-prevention
+// https://dev.bukkit.org/projects/grief-prevention/images
+function BukkitHandler(link: string): SearchResultInfo | false {
+  const splitLink = link.split('/');
+  if (!splitLink.includes('projects')) return false;
+
+  const projectsIndex = splitLink.indexOf('projects');
+
+  const modId = splitLink[projectsIndex + 1];
+  if (modId === undefined) return false;
+
+  return {
+    type: 'plugin',
+    modId: modId,
   };
 }
