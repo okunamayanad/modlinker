@@ -1,4 +1,6 @@
+import { SearchResultInfo } from './interfaces/searchResultInfo';
 import { ExtractInfo } from './lib/extractInfo';
+import { generateModLink } from './lib/generateModLink';
 import { MakeModrinthButton } from './lib/makeModrinthButton';
 
 let searchResults: HTMLElement[] = [];
@@ -30,30 +32,19 @@ searchResults.forEach((element) => {
       modrinthButtonContainer.querySelector('.button-modlinker')!;
     console.log('modrinthButton', modrinthButton);
 
-    const isOnModrinth = await chrome.runtime.sendMessage([
-      'cacheCheck',
-      `https://api.modrinth.com/v2/project/${extractedInfo.modId}`,
-    ]);
+    const modrinthLink = await generateModLink(extractedInfo);
 
-    if (isOnModrinth instanceof Error) {
-      console.error('Error checking Modrinth:', isOnModrinth);
-
+    if ('error' in modrinthLink) {
       modrinthButton.classList.add('button-modlinker-error');
       return;
     }
 
     modrinthButton.classList.add(
-      isOnModrinth ? 'button-modlinker-valid' : 'button-modlinker-warning'
+      modrinthLink.isOnModrinth
+        ? 'button-modlinker-valid'
+        : 'button-modlinker-warning'
     );
 
-    modrinthButton.setAttribute(
-      'href',
-      isOnModrinth
-        ? `https://modrinth.com/mod/${extractedInfo.modId}`
-        : `https://modrinth.com/mods?q=${extractedInfo.modId.replace(
-            /[-_]/g,
-            '+'
-          )}`
-    );
+    modrinthButton.setAttribute('href', modrinthLink.link);
   })();
 });
