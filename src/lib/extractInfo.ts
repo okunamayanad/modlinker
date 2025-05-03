@@ -30,13 +30,17 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   return supportedDomainHandlers[domain](link);
 }
 
+// https://www.curseforge.com/minecraft/mc-mods/create
 function CurseForgeHandler(link: string): SearchResultInfo | false {
-  const modId = link.split('/')[5];
-  if (modId === undefined) return false;
+  const type = link.split('/')[4];
+  if (type !== 'mc-mods' && type !== 'bukkit-plugins') return false;
+
+  const id = link.split('/')[5];
+  if (id === undefined) return false;
 
   return {
-    type: 'mod',
-    modId: modId,
+    type: type === 'mc-mods' ? 'mod' : 'plugin',
+    modId: id,
   };
 }
 
