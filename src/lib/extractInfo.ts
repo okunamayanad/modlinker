@@ -16,8 +16,10 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   const titleContainer = element.firstChild as HTMLElement;
   const linkElement = titleContainer.querySelector(
     // check here if breaks on google update
-    'div:nth-child(1) > div > div:nth-child(2) > div > div > span > a'
+    'div > div > div > div > div > div > span > a'
   );
+  console.log('linkElement', linkElement);
+  
   let link = linkElement?.getAttribute('href') || '';
   if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
 
