@@ -6,21 +6,30 @@ import { MakeModrinthButton } from './lib/makeModrinthButton';
 let searchResults: HTMLElement[] = [];
 
 document.querySelectorAll('#rso div.MjjYud').forEach((element) => {
-  if (element.parentElement?.className === 'ULSxyf') return; // some other google element
+  // if (element.parentElement?.className === 'ULSxyf') return; // some other google element
   searchResults.push(element as HTMLElement);
 });
+
+console.log('searchResults', searchResults);
 
 searchResults.forEach((element) => {
   if (element.childElementCount === 0) return; // for some random reason sometimes the element has no children
 
-  let targettedElement: HTMLElement = element.querySelector('div > div > div')!;
+  let extractedInfo: ReturnType<typeof ExtractInfo> = false;
 
-  while (targettedElement?.childElementCount === 1) {
-    targettedElement = targettedElement.firstElementChild as HTMLElement;
-    console.log('targettedElement', targettedElement);
+  try {
+    let targettedElement: HTMLElement =
+      element.querySelector('div > div > div')!;
+
+    while (targettedElement?.childElementCount === 1) {
+      targettedElement = targettedElement.firstElementChild as HTMLElement;
+      console.log('targettedElement', targettedElement);
+    }
+
+    extractedInfo = ExtractInfo(targettedElement!);
+  } catch (error) {
+    console.error('Error extracting info', error);
   }
-
-  const extractedInfo = ExtractInfo(targettedElement!);
   if (extractedInfo === false) return;
 
   console.log('element', element);
