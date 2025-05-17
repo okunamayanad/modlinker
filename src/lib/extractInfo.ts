@@ -32,16 +32,24 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   return supportedDomainHandlers.get(domain)!(link);
 }
 
+const curseforgeTypeMap = new Map([
+  ['mc-mods', 'mod'],
+  ['bukkit-plugins', 'plugin'],
+]);
+
 // https://www.curseforge.com/minecraft/mc-mods/create
 function CurseForgeHandler(link: string): SearchResultInfo | false {
+  console.log('handling curseforge link', link);
+
   const type = link.split('/')[4];
-  if (type !== 'mc-mods' && type !== 'bukkit-plugins') return false;
+  if (!curseforgeTypeMap.has(type)) return false;
+  console.log('type', type);
 
   const id = link.split('/')[5];
   if (id === undefined) return false;
 
   return {
-    type: type === 'mc-mods' ? 'mod' : 'plugin',
+    type: curseforgeTypeMap.get(type) as 'mod' | 'plugin',
     modId: id,
   };
 }
