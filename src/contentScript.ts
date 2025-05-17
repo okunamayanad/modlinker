@@ -37,7 +37,7 @@ searchResults.forEach((element) => {
 
   // add the modrinth button
   const modrinthButtonContainer = MakeModrinthButton(
-    extractedInfo.modId,
+    extractedInfo.id,
     element.querySelector('div')!.firstElementChild!.firstElementChild!
       .firstElementChild! as HTMLElement,
     window.getComputedStyle(document.body).backgroundColor ===

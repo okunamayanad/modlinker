@@ -14,7 +14,7 @@ export async function generateModLink(info: SearchResultInfo): Promise<
 > {
   const isOnModrinth = await chrome.runtime.sendMessage([
     'cacheCheck',
-    `https://api.modrinth.com/v2/project/${info.modId}`,
+    `https://api.modrinth.com/v2/project/${info.id}`,
   ]);
 
   if (isOnModrinth instanceof Error) {
@@ -26,8 +26,8 @@ export async function generateModLink(info: SearchResultInfo): Promise<
   }
 
   const link = isOnModrinth
-    ? `${linkMap[info.type][0]}${info.modId}`
-    : `${linkMap[info.type][1]}${info.modId.replace(/[-_]/g, '+')}`;
+    ? `${linkMap[info.type][0]}${info.id}`
+    : `${linkMap[info.type][1]}${info.id.replace(/[-_]/g, '+')}`;
 
   return {
     link,

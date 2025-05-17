@@ -50,7 +50,7 @@ function CurseForgeHandler(link: string): SearchResultInfo | false {
 
   return {
     type: curseforgeTypeMap.get(type) as 'mod' | 'plugin',
-    modId: id,
+    id,
   };
 }
 
@@ -59,12 +59,12 @@ function NineMinecraftHandler(link: string): SearchResultInfo | false {
   const splitLink = link.split('/');
   if (splitLink.length !== 4) return false;
 
-  const modId = splitLink[splitLink.length - 1];
-  if (modId === undefined) return false;
+  const id = splitLink[splitLink.length - 1];
+  if (id === undefined) return false;
 
   return {
     type: 'mod',
-    modId: modId,
+    id,
   };
 }
 
@@ -80,7 +80,7 @@ function PlanetMinecraftHandler(link: string): SearchResultInfo | false {
 
   return {
     type: 'mod',
-    modId: modId,
+    id: modId,
   };
 }
 
@@ -108,7 +108,7 @@ function TLauncherHandler(link: string): SearchResultInfo | false {
 
   return {
     type: 'mod',
-    modId: splitModId.join('-'),
+    id: splitModId.join('-'),
   };
 }
 
@@ -125,7 +125,7 @@ function SpigotMCHandler(link: string): SearchResultInfo | false {
 
   return {
     type: 'plugin',
-    modId: modId,
+    id: modId,
   };
 }
 
@@ -142,6 +142,6 @@ function BukkitHandler(link: string): SearchResultInfo | false {
 
   return {
     type: 'plugin',
-    modId: modId,
+    id: modId,
   };
 }
