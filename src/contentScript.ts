@@ -12,7 +12,15 @@ document.querySelectorAll('#rso div.MjjYud').forEach((element) => {
 
 searchResults.forEach((element) => {
   if (element.childElementCount === 0) return; // for some random reason sometimes the element has no children
-  const extractedInfo = ExtractInfo(element.querySelector('div > div > div')!);
+
+  let targettedElement: HTMLElement = element.querySelector('div > div > div')!;
+
+  while (targettedElement?.childElementCount === 1) {
+    targettedElement = targettedElement.firstElementChild as HTMLElement;
+    console.log('targettedElement', targettedElement);
+  }
+
+  const extractedInfo = ExtractInfo(targettedElement!);
   if (extractedInfo === false) return;
 
   console.log('element', element);

@@ -14,14 +14,15 @@ const supportedDomainHandlers: Record<
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   const titleContainer = element.firstChild as HTMLElement;
-  const linkElement = titleContainer.querySelector(
-    // check here if breaks on google update
-    'div:nth-child(1) > div > div:nth-child(2) > div > div > span > a'
-  );
+  const linkElement = titleContainer.querySelector('a') as HTMLAnchorElement;
   let link = linkElement?.getAttribute('href') || '';
+  console.log('link', link);
+
   if (link.endsWith('/')) link = link.slice(0, -1); // remove trailing slash
 
   let domain = link.split('/')[2];
+  console.log('domain', domain);
+
   if (domain === undefined) return false;
   if (domain.includes('www.')) {
     domain = domain.split('www.')[1];
