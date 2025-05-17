@@ -1,16 +1,16 @@
 import { SearchResultInfo } from '../interfaces/searchResultInfo';
 
-const supportedDomainHandlers: Record<
+const supportedDomainHandlers: Map<
   string,
   (link: string) => SearchResultInfo | false
-> = {
-  'curseforge.com': CurseForgeHandler,
-  '9minecraft.net': NineMinecraftHandler,
-  'planetminecraft.com': PlanetMinecraftHandler,
-  'tlauncher.org': TLauncherHandler,
-  'spigotmc.org': SpigotMCHandler,
-  'dev.bukkit.org': BukkitHandler,
-};
+> = new Map([
+  ['curseforge.com', CurseForgeHandler],
+  ['9minecraft.net', NineMinecraftHandler],
+  ['planetminecraft.com', PlanetMinecraftHandler],
+  ['tlauncher.org', TLauncherHandler],
+  ['spigotmc.org', SpigotMCHandler],
+  ['dev.bukkit.org', BukkitHandler],
+]);
 
 export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   const titleContainer = element.firstChild as HTMLElement;
@@ -28,8 +28,9 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
     domain = domain.split('www.')[1];
   }
 
-  if (supportedDomainHandlers[domain] === undefined) return false;
-  return supportedDomainHandlers[domain](link);
+  const domainHandler = supportedDomainHandlers.get(domain);
+  if (domainHandler === undefined) return false;
+  return domainHandler(link);
 }
 
 // https://www.curseforge.com/minecraft/mc-mods/create
