@@ -28,9 +28,8 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
     domain = domain.split('www.')[1];
   }
 
-  const domainHandler = supportedDomainHandlers.get(domain);
-  if (domainHandler === undefined) return false;
-  return domainHandler(link);
+  if (!supportedDomainHandlers.has(domain)) return false;
+  return supportedDomainHandlers.get(domain)!(link);
 }
 
 // https://www.curseforge.com/minecraft/mc-mods/create
