@@ -1,4 +1,4 @@
 export type SearchResultInfo = {
-  type: 'mod' | 'plugin';
+  type: 'mod' | 'plugin' | 'modpack';
   id: string;
 };

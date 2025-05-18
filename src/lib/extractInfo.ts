@@ -32,9 +32,10 @@ export function ExtractInfo(element: HTMLElement): SearchResultInfo | false {
   return supportedDomainHandlers.get(domain)!(link);
 }
 
-const curseforgeTypeMap = new Map([
+const curseforgeTypeMap: Map<string, SearchResultInfo['type']> = new Map([
   ['mc-mods', 'mod'],
   ['bukkit-plugins', 'plugin'],
+  ['modpacks', 'modpack'],
 ]);
 
 // https://www.curseforge.com/minecraft/mc-mods/create
@@ -49,7 +50,7 @@ function CurseForgeHandler(link: string): SearchResultInfo | false {
   if (id === undefined) return false;
 
   return {
-    type: curseforgeTypeMap.get(type) as 'mod' | 'plugin',
+    type: curseforgeTypeMap.get(type)!,
     id,
   };
 }

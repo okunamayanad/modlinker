@@ -50,6 +50,7 @@ searchResults.forEach((element) => {
     console.log('modrinthButton', modrinthButton);
 
     const modrinthLink = await generateModLink(extractedInfo);
+    console.log('modrinthLink', modrinthLink);
 
     if ('error' in modrinthLink) {
       modrinthButton.classList.add('button-modlinker-error');

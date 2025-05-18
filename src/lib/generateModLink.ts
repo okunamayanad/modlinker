@@ -3,6 +3,7 @@ import { SearchResultInfo } from '../interfaces/searchResultInfo';
 const linkMap: Record<SearchResultInfo['type'], string[]> = {
   mod: ['https://modrinth.com/mod/', 'https://modrinth.com/mods?q='],
   plugin: ['https://modrinth.com/plugin/', 'https://modrinth.com/plugins?q='],
+  modpack: ['https://modrinth.com/modpack/', 'https://modrinth.com/modpacks?q='],
 };
 
 export async function generateModLink(info: SearchResultInfo): Promise<
