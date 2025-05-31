@@ -1,4 +1,5 @@
 # modlinker
+Join the Discord [![](https://dcbadge.limes.pink/api/server/https://discord.gg/mMmVFRwBmp?style=flat&theme=blurple&compact=true)](https://discord.gg/mMmVFRwBmp)
 
 Displays a Modrinth link next to CurseForge and other Minecraft mod sites (9Minecraft, Planet Minecraft, mc-mod).
 
